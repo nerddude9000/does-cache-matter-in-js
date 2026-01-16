@@ -1,6 +1,6 @@
 import time
 
-MATRIX_SIZE = 5000
+MATRIX_SIZE = 10000
 SCALAR = 2
 
 def scalar_mul_stupid_with_while(mat: list[list[int]], scalar: int):
@@ -55,6 +55,13 @@ def test():
     log_time(matrix, scalar_mul_stupid, "stupid")
     log_time(matrix, scalar_mul_correct, "correct loop order")
     log_time(matrix, scalar_mul_correct_4x, "correct loop order + 4 at a time")
+
+    # result on my computer shows that (in python):
+    # 1- while is almost 2x slower than using `for in range(len)` !!
+    # 2- the order of for loops doesn't matter that much (correct is 1.3x~ faster than stupid order)
+    # 3- doing 4 at a time is a little slower than one by one which is weird.
+    # 4- python is actually slower than javascript by a suprising amount (excluding C modules of course)
+
 
 if __name__ == "__main__":
     test()
