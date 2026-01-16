@@ -66,7 +66,7 @@ function test() {
 	scalarMulCorrect(matrix, SCALAR);
 	console.timeEnd("correct loop order");
 
-	// 17x~ faster (20x~ without out-of-bounds check)
+	// 16.5x~ faster (20x~ without out-of-bounds check)
 	console.time("correct loop order + 4 at a time");
 	scalarMulCorrect4x(matrix, SCALAR);
 	console.timeEnd("correct loop order + 4 at a time");
