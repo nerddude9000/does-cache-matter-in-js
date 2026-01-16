@@ -3,9 +3,10 @@
 These are a few small tests to prove that knowing about cache (and other 'low-level' concepts) helps ALL developers, even those using slower or high level languages like JavaScript.
 
 The test functions basically all loop through a matrix, multiplying each element with a scalar, and in general are three categories:
-    - 'stupid' functions: they loop in the wrong order; the outer goes through columns, and the inner loop the rows. this almost always causes a cache miss.
-    - correct functions: they loop in the correct order; the outer goes through rows, and the inner loop the columns. this makes cache hits much much more likely.
-    - correct and go through four at a time: same as correct ones, but they go throught four elements each iteration instead of one. these generally make cache hits a little more common.
+
+- 'stupid' functions: they loop in the wrong order; the outer goes through columns, and the inner loop the rows. this almost always causes a cache miss.
+- correct functions: they loop in the correct order; the outer goes through rows, and the inner loop the columns. this makes cache hits much much more likely.
+- correct and go through four at a time: same as correct ones, but they go throught four elements each iteration instead of one. these generally make cache hits a little more common.
 
 The tests might not be perfect, but they still show how knowledge about C really helps even if you don't program in it.
 
