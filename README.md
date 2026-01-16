@@ -8,6 +8,8 @@ The test functions basically all loop through a matrix, multiplying each element
 - correct functions: they loop in the correct order; the outer goes through rows, and the inner loop the columns. this makes cache hits much much more likely.
 - correct and go through four at a time: same as correct ones, but they go throught four elements each iteration instead of one. these generally make cache hits a little more common.
 
+<img width="925" height="319" alt="image" src="https://github.com/user-attachments/assets/0a7559bb-fe2a-4fd0-ae30-17e03bcbea9e" />
+
 The tests might not be perfect, but they still show how knowledge about C really helps even if you don't program in it.
 
 ## What's cache? why does it matter?
