@@ -1,7 +1,7 @@
 import time
 
 MATRIX_SIZE = 10000
-SCALAR = 2
+SCALAR = 2 # shouldn't matter
 
 def scalar_mul_stupid_with_while(mat: list[list[int]], scalar: int):
     x, y = 0, 0
@@ -22,6 +22,7 @@ def scalar_mul_correct(mat: list[list[int]], scalar: int):
         for x in range(len(mat[0])):
             mat[y][x] *= scalar
 
+# maybe there's a better way of implementing this function idk
 def scalar_mul_correct_4x(mat: list[list[int]], scalar: int):
     leftover_x = 0
     for y in range(len(mat)):
