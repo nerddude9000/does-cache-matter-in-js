@@ -107,8 +107,6 @@ function test()
 	echo "Correct loop order + 4 at a time:", $correctTime4x, "s\n";
 	$correctTime4xUnsafe = exec_time("scalarMulCorrect4xUnsafe", $matrix, SCALAR); // ~3.3x faster than baseline (fastest)
 	echo "Correct loop order + 4 at a time WITHOUT leftover check (unsafe):", $correctTime4xUnsafe, "s\n";
-
-	// === Conclusion: C knowledge wins once again.
 }
 
 test();

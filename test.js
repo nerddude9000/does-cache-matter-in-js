@@ -45,6 +45,22 @@ function scalarMulCorrect4x(mat, scalar) {
   return result;
 }
 
+// This unsafe version doesn't do the leftover check, so MATRIX_SIZE % 4 = 0 must be true
+function scalarMulCorrect4xUnsafe(mat, scalar) {
+  const result = mat;
+
+  for (let y = 0; y < mat.length; y++) {
+    for (let x = 0; x < mat[0].length; x += 4) {
+      result[y][x] *= scalar;
+      result[y][x + 1] *= scalar;
+      result[y][x + 2] *= scalar;
+      result[y][x + 3] *= scalar;
+    }
+  }
+
+  return result;
+}
+
 function test() {
   const MATRIX_SIZE = 10_000;
 
@@ -56,22 +72,30 @@ function test() {
   // value shouldn't matter.
   const SCALAR = 10;
 
-  // NOTE: these timing are on my machine on MATRIX_SIZE 10000 using node
+  // === Results
+  //these timings are on my machine on MATRIX_SIZE 10000 using node
 
   // 1x faster (baseline)
   console.time("stupid loop order");
   scalarMulStupid(matrix, SCALAR);
   console.timeEnd("stupid loop order");
 
-  // 12x~ faster
+  // 12x-16x~ faster
   console.time("correct loop order");
   scalarMulCorrect(matrix, SCALAR);
   console.timeEnd("correct loop order");
 
-  // 16.5x~ faster (20x~ without out-of-bounds check)
+  // 16.5x-22x~ faster
   console.time("correct loop order + 4 at a time");
   scalarMulCorrect4x(matrix, SCALAR);
   console.timeEnd("correct loop order + 4 at a time");
+
+  // 20x-26x~ faster
+  console.time("correct loop order + 4 at a time + no leftover check (unsafe)");
+  scalarMulCorrect4xUnsafe(matrix, SCALAR);
+  console.timeEnd(
+    "correct loop order + 4 at a time + no leftover check (unsafe)",
+  );
 }
 
 test();
